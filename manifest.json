@@ -1,13 +1,79 @@
 {
   "$schema": "./schema/manifest.schema.json",
   "schema": 1,
-  "updated": "2026-11-05T04:15:14.449Z",
+  "updated": "2026-11-05T18:42:54.290Z",
   "plugin": {
     "channels": {
-      "stable": "2.0.1",
+      "stable": "2.0.2",
       "beta": null
     },
     "releases": [
+      {
+        "version": "2.0.2",
+        "date": "2026-11-05",
+        "base": "plugin/2.0.2/",
+        "notes": "Supports Euro Truck Simulator 2 1.62.1.0 and American Truck Simulator 1.62.1.1. The truck's control offsets moved in 1.62 (lights, horn, hazards, engine brake, wipers, windows, turbo gauge). 1.61 is no longer supported.",
+        "verified_builds": [
+          {
+            "game": "eut2",
+            "build": "1afd6ae63840",
+            "label": "1.62.1.0"
+          },
+          {
+            "game": "ats",
+            "build": "d0f1015fe858",
+            "label": "1.62.1.1"
+          }
+        ],
+        "min_app": "2.0.0",
+        "files": [
+          {
+            "path": "ts-fmod-plugin-v2.dll",
+            "size": 729600,
+            "sha256": "797f3f0cc05c93de9976cb2e9d11c0a606794856475ab057c7c1c0e28efb6e2e"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/ats/BACKUP_system_warning.bank",
+            "size": 64192,
+            "sha256": "fdf78bdbf45ef164a193af6e18a35a86a1d266416bbd8782d8a9c8e779e0c3b5"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/ats/BACKUP_system_warning.bank.guids",
+            "size": 214,
+            "sha256": "cf89f9c464aa7cfb0e77322a120413b26730afc218868dd33c95c397b618dec5"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/ats/master.bank",
+            "size": 12486,
+            "sha256": "fe4fdaf3ac28e2e7591bb926a8f7af0d2338e76143de1e2715072876b6efe5f5"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/ats/master.bank.guids",
+            "size": 2303,
+            "sha256": "ce3d072c9e81cd159b45169b64ede6018287ac923a9a4c2cd33dc17b2952109f"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/eut2/BACKUP_system_warning.bank",
+            "size": 64192,
+            "sha256": "fdf78bdbf45ef164a193af6e18a35a86a1d266416bbd8782d8a9c8e779e0c3b5"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/eut2/BACKUP_system_warning.bank.guids",
+            "size": 214,
+            "sha256": "cf89f9c464aa7cfb0e77322a120413b26730afc218868dd33c95c397b618dec5"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/eut2/master.bank",
+            "size": 14440,
+            "sha256": "841ab5afd0a5e9120bbbd53e2aeff1ee93ba2f60b1a833c109fc2e8dbdf25570"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/eut2/master.bank.guids",
+            "size": 2303,
+            "sha256": "ce3d072c9e81cd159b45169b64ede6018287ac923a9a4c2cd33dc17b2952109f"
+          }
+        ]
+      },
       {
         "version": "2.0.1",
         "date": "2026-11-05",
