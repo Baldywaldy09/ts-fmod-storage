@@ -1,0 +1,8 @@
+{
+  "$schema": "./schema/app.schema.json",
+  "schema": 1,
+  "version": "2.0.0",
+  "date": "2026-11-05",
+  "url": "https://github.com/Baldywaldy09/ts-fmod-storage/releases/latest",
+  "notes": "The rebuilt manager."
+}

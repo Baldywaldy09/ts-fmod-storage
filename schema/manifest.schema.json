@@ -3,50 +3,104 @@
   "$id": "https://raw.githubusercontent.com/Baldywaldy09/ts-fmod-storage/main/schema/manifest.schema.json",
   "title": "TS-FMOD storage manifest",
   "type": "object",
-  "required": ["schema", "updated", "app", "plugin", "notices"],
+  "required": [
+    "schema",
+    "updated",
+    "plugin",
+    "notices"
+  ],
   "properties": {
-    "$schema": { "type": "string" },
-    "schema": { "const": 1, "description": "Bumped only for breaking changes; the manager ignores manifests with a newer schema" },
-    "updated": { "type": ["string", "null"], "format": "date-time" },
-    "app": {
-      "type": ["object", "null"],
-      "required": ["version", "date", "url", "notes"],
-      "properties": {
-        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
-        "date": { "type": "string", "format": "date" },
-        "url": { "type": "string", "format": "uri", "description": "Where the manager sends people to download it" },
-        "notes": { "type": "string" }
-      }
+    "$schema": {
+      "type": "string"
+    },
+    "schema": {
+      "const": 1,
+      "description": "Bumped only for breaking changes; the manager ignores manifests with a newer schema"
+    },
+    "updated": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
     },
     "plugin": {
       "type": "object",
-      "required": ["channels", "releases"],
+      "required": [
+        "channels",
+        "releases"
+      ],
       "properties": {
         "channels": {
           "type": "object",
-          "properties": { "stable": { "type": ["string", "null"] }, "beta": { "type": ["string", "null"] } }
+          "properties": {
+            "stable": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "beta": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
         },
         "releases": {
           "type": "array",
           "description": "Newest first",
           "items": {
             "type": "object",
-            "required": ["version", "date", "base", "files"],
+            "required": [
+              "version",
+              "date",
+              "base",
+              "files"
+            ],
             "properties": {
-              "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
-              "date": { "type": "string", "format": "date" },
-              "base": { "type": "string", "description": "Folder of the release's files, relative to the repo root" },
-              "notes": { "type": "string" },
-              "min_app": { "type": "string", "description": "Oldest manager that can install it" },
+              "version": {
+                "type": "string",
+                "pattern": "^\\d+\\.\\d+\\.\\d+$"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "base": {
+                "type": "string",
+                "description": "Folder of the release's files, relative to the repo root"
+              },
+              "notes": {
+                "type": "string"
+              },
+              "min_app": {
+                "type": "string",
+                "description": "Oldest manager that can install it"
+              },
               "verified_builds": {
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["game", "build", "label"],
+                  "required": [
+                    "game",
+                    "build",
+                    "label"
+                  ],
                   "properties": {
-                    "game": { "enum": ["eut2", "ats"] },
-                    "build": { "type": "string" },
-                    "label": { "type": "string" }
+                    "game": {
+                      "enum": [
+                        "eut2",
+                        "ats"
+                      ]
+                    },
+                    "build": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
                   }
                 }
               },
@@ -54,11 +108,23 @@
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["path", "size", "sha256"],
+                  "required": [
+                    "path",
+                    "size",
+                    "sha256"
+                  ],
                   "properties": {
-                    "path": { "type": "string", "description": "Relative to the game's bin/win_x64/plugins folder" },
-                    "size": { "type": "integer" },
-                    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+                    "path": {
+                      "type": "string",
+                      "description": "Relative to the game's bin/win_x64/plugins folder"
+                    },
+                    "size": {
+                      "type": "integer"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
                   }
                 }
               }
@@ -71,13 +137,37 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "level", "title", "body"],
+        "required": [
+          "id",
+          "level",
+          "title",
+          "body"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "level": { "enum": ["info", "warn", "danger"] },
-          "title": { "type": "string" },
-          "body": { "type": "string" },
-          "until": { "type": ["string", "null"], "format": "date", "description": "Hidden after this date" }
+          "id": {
+            "type": "string"
+          },
+          "level": {
+            "enum": [
+              "info",
+              "warn",
+              "danger"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "until": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date",
+            "description": "Hidden after this date"
+          }
         }
       }
     }

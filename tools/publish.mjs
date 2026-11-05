@@ -2,7 +2,7 @@
 // Publishes a plugin build into this repo and updates manifest.json.
 //
 //   node tools/publish.mjs plugin <stage-dir> [--notes "text"] [--channel stable|beta]
-//   node tools/publish.mjs app <version> [--notes "text"] [--url <download url>]
+//   node tools/publish.mjs app <version> --url <download page> [--notes "text"]
 //   node tools/publish.mjs notice <id> <info|warn|danger> <title> <body> [--until 2026-12-31]
 //   node tools/publish.mjs verify
 //
@@ -16,6 +16,7 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const MANIFEST = join(ROOT, 'manifest.json')
+const APP = join(ROOT, 'app.json')
 const DLL = 'ts-fmod-plugin-v2.dll'
 // Only what the plugin ships: never a user's banks, settings or logs from a dev stage folder
 const SHIPPED = [DLL, 'ts-fmod-plugin-v2/builtin/']
@@ -34,7 +35,6 @@ async function loadManifest() {
       $schema: './schema/manifest.schema.json',
       schema: 1,
       updated: null,
-      app: null,
       plugin: { channels: { stable: null, beta: null }, releases: [] },
       notices: [],
     }
@@ -113,16 +113,22 @@ async function publishPlugin(stage) {
   console.log(`Published plugin ${version} (${files.length} files) to ${base}, channel ${channel}`)
 }
 
+// Every manager older than the version in app.json refuses to run until it's updated,
+// and it only ever sends people to this link: the manager never downloads itself
 async function publishApp(version) {
-  const manifest = await loadManifest()
-  manifest.app = {
+  if (!/^\d+\.\d+\.\d+$/.test(version ?? '')) throw new Error('app <x.y.z> --url <download page>')
+  const url = flag('url')
+  if (!url || !/^https:\/\//.test(url)) throw new Error('--url must be an https link to the download page')
+  const app = {
+    $schema: './schema/app.schema.json',
+    schema: 1,
     version,
     date: new Date().toISOString().slice(0, 10),
-    url: flag('url') ?? 'https://github.com/Baldywaldy09/ts-fmod-storage/releases/latest',
+    url,
     notes: flag('notes') ?? '',
   }
-  await saveManifest(manifest)
-  console.log(`App ${version} announced`)
+  await writeFile(APP, `${JSON.stringify(app, null, 2)}\n`)
+  console.log(`Manager ${version} published: older managers now require this update (${url})`)
 }
 
 async function addNotice([id, level, title, body]) {
@@ -149,7 +155,14 @@ async function verify() {
       }
     }
   }
-  console.log(bad ? `${bad} bad file(s)` : 'manifest.json matches every file')
+  try {
+    const app = JSON.parse(await readFile(APP, 'utf8'))
+    if (!/^\d+\.\d+\.\d+$/.test(app.version) || !/^https:\/\//.test(app.url)) throw new Error('needs a x.y.z version and an https url')
+  } catch (error) {
+    bad++
+    console.error(`BAD  app.json: ${error.message}`)
+  }
+  console.log(bad ? `${bad} problem(s)` : 'manifest.json matches every file, app.json is valid')
   process.exitCode = bad ? 1 : 0
 }
 

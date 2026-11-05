@@ -2,12 +2,6 @@
   "$schema": "./schema/manifest.schema.json",
   "schema": 1,
   "updated": "2026-11-05T04:15:14.449Z",
-  "app": {
-    "version": "2.0.0",
-    "date": "2026-11-05",
-    "url": "https://github.com/Baldywaldy09/ts-fmod-storage/releases/latest",
-    "notes": "The rebuilt manager."
-  },
   "plugin": {
     "channels": {
       "stable": "2.0.1",

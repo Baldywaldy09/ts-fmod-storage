@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Baldywaldy09/ts-fmod-storage/main/schema/app.schema.json",
+  "title": "TS-FMOD Manager release",
+  "description": "The current TS-FMOD Manager. Any older manager refuses to run until it has been updated from url.",
+  "type": "object",
+  "required": [
+    "schema",
+    "version",
+    "date",
+    "url",
+    "notes"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema": {
+      "const": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "description": "The download page the manager opens in the browser"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
