@@ -1,0 +1,81 @@
+{
+  "$schema": "./schema/manifest.schema.json",
+  "schema": 1,
+  "updated": "2026-11-05T03:52:59.283Z",
+  "app": {
+    "version": "2.0.0",
+    "date": "2026-11-05",
+    "url": "https://github.com/Baldywaldy09/ts-fmod-storage/releases/latest",
+    "notes": "The rebuilt manager."
+  },
+  "plugin": {
+    "channels": {
+      "stable": "2.0.0",
+      "beta": null
+    },
+    "releases": [
+      {
+        "version": "2.0.0",
+        "date": "2026-11-05",
+        "base": "plugin/2.0.0/",
+        "notes": "First release of the rebuilt plugin. Own FMOD Studio system, truck id matching that survives language changes, game sounds muted on the game's buses instead of its saved settings, and a live link to TS-FMOD Manager.",
+        "verified_builds": [
+          {
+            "game": "eut2",
+            "build": "05126873bfae",
+            "label": "1.61.1.9"
+          }
+        ],
+        "min_app": "2.0.0",
+        "files": [
+          {
+            "path": "ts-fmod-plugin-v2.dll",
+            "size": 696832,
+            "sha256": "06947c0da5e533af5967261380605530f33ace07be1c7b0b00fbd5ce126c944e"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/ats/BACKUP_system_warning.bank",
+            "size": 64192,
+            "sha256": "fdf78bdbf45ef164a193af6e18a35a86a1d266416bbd8782d8a9c8e779e0c3b5"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/ats/BACKUP_system_warning.bank.guids",
+            "size": 214,
+            "sha256": "cf89f9c464aa7cfb0e77322a120413b26730afc218868dd33c95c397b618dec5"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/ats/master.bank",
+            "size": 12486,
+            "sha256": "fe4fdaf3ac28e2e7591bb926a8f7af0d2338e76143de1e2715072876b6efe5f5"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/ats/master.bank.guids",
+            "size": 2303,
+            "sha256": "ce3d072c9e81cd159b45169b64ede6018287ac923a9a4c2cd33dc17b2952109f"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/eut2/BACKUP_system_warning.bank",
+            "size": 64192,
+            "sha256": "fdf78bdbf45ef164a193af6e18a35a86a1d266416bbd8782d8a9c8e779e0c3b5"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/eut2/BACKUP_system_warning.bank.guids",
+            "size": 214,
+            "sha256": "cf89f9c464aa7cfb0e77322a120413b26730afc218868dd33c95c397b618dec5"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/eut2/master.bank",
+            "size": 14440,
+            "sha256": "841ab5afd0a5e9120bbbd53e2aeff1ee93ba2f60b1a833c109fc2e8dbdf25570"
+          },
+          {
+            "path": "ts-fmod-plugin-v2/builtin/eut2/master.bank.guids",
+            "size": 2303,
+            "sha256": "ce3d072c9e81cd159b45169b64ede6018287ac923a9a4c2cd33dc17b2952109f"
+          }
+        ]
+      }
+    ]
+  },
+  "notices": []
+}

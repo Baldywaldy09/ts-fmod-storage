@@ -1,0 +1,4 @@
+*.dll binary
+*.bank binary
+*.guids text eol=lf
+*.json text eol=lf
